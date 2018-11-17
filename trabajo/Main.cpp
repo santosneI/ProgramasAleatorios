@@ -40,7 +40,7 @@ using namespace cimg_library;
 			return max;
 		}
 int main() {
-	CImg<double> srcImage("flores_ev+2.bmp"); // Open file and object initialization
+	CImg<double> srcImage("bailarina.bmp"); // Open file and object initialization
 
 	double *pRcomp, *pGcomp, *pBcomp; // Pointers to the R, G and B components
 	double *pRnew, *pGnew, *pBnew;
@@ -74,7 +74,7 @@ int main() {
 		printf("\nMemory allocating error\n");
 		exit(-2);
 	}
-	printf("No ha fallado\n");
+
 	// Pointers to the RGB arrays of the source image
 	pRcomp = srcImage.data(); // pRcomp points to the R component
 	pGcomp = pRcomp + height * width; // pGcomp points to the G component
@@ -148,8 +148,6 @@ int main() {
 
 
 	}
-	printf("Algoritmo acabado\n");
-
 
 	/***********************************************
 	 * End of the algorithm
@@ -162,18 +160,16 @@ int main() {
 	 clock_gettime(CLOCK_REALTIME, &tEnd);
 	 dElapsedTimeS = (tEnd.tv_sec - tStart.tv_sec);
 	 dElapsedTimeS += (tEnd.tv_nsec - tStart.tv_nsec) / 1e+9;
-	 printf("%f",dElapsedTimeS);
-	 printf("\nse ha medido el tiempo\n");
+	 printf("Tiempo de Ejecucion del algoritmo: "); 
+	 printf("%f\n",dElapsedTimeS);
 		
 	// Create a new image object with the calculated pixels
 	// In case of normal color image use nComp=3,
 	// In case of B&W image use nComp=1.
 	CImg<double> dstImage(pdstImage, width, height, 1, nComp);
 	// Store the destination image in disk
-	dstImage.save("Flores mejoradas.bmp"); 
-
+	dstImage.save("bailarina2.bmp"); 
 	// Display the destination image
-	printf("Nueva foto");
 	dstImage.display(); // If needed, show the result image
 	return(0);
 
